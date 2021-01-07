@@ -12,7 +12,7 @@ jobs:
     env:
       REGISTRY: ghcr.io
       ASPNETCORE_ENV: Staging
-      # AZURE_APP: azureadconnector-development-wahinekaimemberdatabase
+      AZURE_APP: azureadconnector-development-wahinekaimemberdatabase
 
     steps:
       - name: Checkout Code
@@ -38,17 +38,17 @@ jobs:
             ASPNETCORE_ENV=${{ env.ASPNETCORE_ENV }}
             PACKAGES_TOKEN=${{ secrets.PACKAGES_TOKEN }}
 
-      # - name: Login via Azure CLI
-      #   uses: azure/login@v1
-      #   with:
-      #     creds: ${{ secrets.DEVELOPMENT_AZURE_CREDENTIALS }}
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.DEVELOPMENT_AZURE_CREDENTIALS }}
 
-      # - name: Deploy to Azure App Service
-      #   uses: azure/webapps-deploy@v2
-      #   with:
-      #     app-name: ${{ env.AZURE_APP }}
-      #     images: ${{ env.REGISTRY }}/${{ github.repository }}:latest
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_APP }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}:latest
 
-      # - name: Azure logout
-      #   run: |
-      #     az logout
+      - name: Azure logout
+        run: |
+          az logout
