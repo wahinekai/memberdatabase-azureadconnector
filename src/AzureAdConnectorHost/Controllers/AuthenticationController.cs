@@ -12,6 +12,7 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
+    using Microsoft.Graph;
     using WahineKai.Common;
     using WahineKai.MemberDatabase.AzureAdConnector.Service;
     using WahineKai.MemberDatabase.AzureAdConnector.Service.Contracts;
@@ -45,25 +46,31 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host.Controllers
         /// <returns>An OK Result if allowed, a BadRequestObject if not</returns>
         [HttpPost]
         [ActionName("ValidateEmail")]
-        public async Task<IActionResult> ValidateSignupSignInAsync([FromBody] Body body)
+        public async Task<IActionResult> ValidateSignupSignInAsync([FromBody] User body)
         {
             // If input data is null, show block page
             try
             {
                 body = Ensure.IsNotNull(() => body);
-                body.Validate();
             }
             catch (Exception)
             {
                 return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", "There was a problem with your request."));
             }
 
-            // Check to see whether a user with that email can login using the API Service
-            var canSignUp = await this.apiConnectorService.CanSignUpFromEmail(body.Email);
-
-            if (!canSignUp)
+            foreach (var identity in body.Identities)
             {
-                return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", $"Email {body.Email} is not registered as an administrator in the system.  Contact cathy@wahinekai.org for help."));
+                if (identity.SignInType.StartsWith("emailAddress"))
+                {
+                    var canSignUp = await this.apiConnectorService.CanSignUpFromEmail(identity.IssuerAssignedId);
+
+                    if (!canSignUp)
+                    {
+                        return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", $"Email {identity.IssuerAssignedId} is not registered as an administrator in the system.  Contact cathy@wahinekai.org for help."));
+                    }
+
+                    break;
+                }
             }
 
             // Input validation passed successfully, return `Allow` response.
