@@ -61,7 +61,7 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host.Controllers
 
                         if (!canSignUp)
                         {
-                            return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", $"Email {identity.IssuerAssignedId} is not registered as an administrator in the system.  Contact cathy@wahinekai.org for help."));
+                            return new OkObjectResult(new ResponseContent("ShowBlockPage", $"Email {identity.IssuerAssignedId} is not registered as an administrator in the system.  Contact cathy@wahinekai.org for help."));
                         }
 
                         break;
@@ -73,7 +73,7 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host.Controllers
             }
             catch (Exception)
             {
-                return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", "There was a problem with your request."));
+                return new OkObjectResult(new ResponseContent("ShowBlockPage", "There was a problem with your request."));
             }
         }
     }
