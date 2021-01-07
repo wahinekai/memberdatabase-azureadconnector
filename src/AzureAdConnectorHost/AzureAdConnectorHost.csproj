@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>520bbe04-948e-4a44-bd92-0567bfa57c79</UserSecretsId>
+    <RootNamespace>WahineKai.MemberDatabase.AzureAdConnector.Host</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'LocalDevelopment' " />
+  <ItemGroup>
+    <Content Remove="StyleCop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="StyleCop.json">
+    </AdditionalFiles>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.2.0-beta.3" />
+    <PackageReference Include="Azure.Identity" Version="1.4.0-beta.1" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.2" />
+        
+    <PackageReference Include="WahineKai.Common" Version="1.*" />
+    <PackageReference Include="WahineKai.Common.Api" Version="1.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AzureAdConnectorService\AzureAdConnectorService.csproj" />
+  </ItemGroup>
+
+</Project>

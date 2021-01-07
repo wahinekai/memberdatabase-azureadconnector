@@ -1,0 +1,8 @@
+bin/
+obj/
+out/
+Dockerfile
+LICENSE.txt
+README.md
+.gitignore
+*.py

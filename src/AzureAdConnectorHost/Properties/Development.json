@@ -1,0 +1,18 @@
+﻿{
+  "Cosmos": {
+    "EndpointUrl": "https://wahine-kai-member-database.documents.azure.com:443/",
+    "PrimaryKey": "<Our Azure Cosmos account Primary Key (set in user secrets, do not add here!!!)>",
+    "DatabaseId":  "wahine-kai-member-database"
+  },
+  "BasicAuth":  {
+    "Username":  "<Basic authentication Username (set in user secrets, do not add here!!!)>",
+    "Password":  "<Basic authentication Password (set in user secrets, do not add here!!!)>"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  }
+}
