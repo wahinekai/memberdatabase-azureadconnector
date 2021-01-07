@@ -15,7 +15,7 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host
         /// <summary>
         /// The API Version os the request
         /// </summary>
-        public const string ApiVersion = "0.0.1";
+        public const string ApiVersion = "1.0.0";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseContent"/> class.
