@@ -46,7 +46,7 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host.Controllers
         /// <returns>An OK Result if allowed, a BadRequestObject if not</returns>
         [HttpPost]
         [ActionName("ValidateEmail")]
-        public async Task<IActionResult> ValidateSignupSignInAsync([FromBody] User body)
+        public async Task<IActionResult> ValidateSignupSignInAsync([FromBody] Body body)
         {
             // If input data is null, show block page
             try
@@ -60,7 +60,7 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host.Controllers
 
             foreach (var identity in body.Identities)
             {
-                if (identity.SignInType.StartsWith("emailAddress"))
+                if (identity.SignInType?.StartsWith("emailAddress") ?? false)
                 {
                     var canSignUp = await this.apiConnectorService.CanSignUpFromEmail(identity.IssuerAssignedId);
 
