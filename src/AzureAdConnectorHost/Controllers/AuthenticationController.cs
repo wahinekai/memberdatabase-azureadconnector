@@ -52,29 +52,29 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host.Controllers
             try
             {
                 body = Ensure.IsNotNull(() => body);
+
+                foreach (var identity in body.Identities)
+                {
+                    if (identity.SignInType?.StartsWith("emailAddress") ?? false)
+                    {
+                        var canSignUp = await this.apiConnectorService.CanSignUpFromEmail(identity.IssuerAssignedId);
+
+                        if (!canSignUp)
+                        {
+                            return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", $"Email {identity.IssuerAssignedId} is not registered as an administrator in the system.  Contact cathy@wahinekai.org for help."));
+                        }
+
+                        break;
+                    }
+                }
+
+                // Input validation passed successfully, return `Allow` response.
+                return new OkObjectResult(new ResponseContent());
             }
             catch (Exception)
             {
                 return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", "There was a problem with your request."));
             }
-
-            foreach (var identity in body.Identities)
-            {
-                if (identity.SignInType?.StartsWith("emailAddress") ?? false)
-                {
-                    var canSignUp = await this.apiConnectorService.CanSignUpFromEmail(identity.IssuerAssignedId);
-
-                    if (!canSignUp)
-                    {
-                        return new BadRequestObjectResult(new ResponseContent("ShowBlockPage", $"Email {identity.IssuerAssignedId} is not registered as an administrator in the system.  Contact cathy@wahinekai.org for help."));
-                    }
-
-                    break;
-                }
-            }
-
-            // Input validation passed successfully, return `Allow` response.
-            return new OkObjectResult(new ResponseContent());
         }
     }
 }
