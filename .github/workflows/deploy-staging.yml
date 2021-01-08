@@ -13,6 +13,7 @@ jobs:
       REGISTRY: ghcr.io
       ASPNETCORE_ENV: Staging
       AZURE_APP: azureadconnector-development-wahinekaimemberdatabase
+      TAG: dev
 
     steps:
       - name: Checkout Code
@@ -33,7 +34,7 @@ jobs:
         with:
           push: true # Will only build if this is not here
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository }}:latest
+            ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG }}
           build-args: |
             ASPNETCORE_ENV=${{ env.ASPNETCORE_ENV }}
             PACKAGES_TOKEN=${{ secrets.PACKAGES_TOKEN }}
@@ -47,7 +48,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_APP }}
-          images: ${{ env.REGISTRY }}/${{ github.repository }}:latest
+          images: ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.tag }}
 
       - name: Azure logout
         run: |
