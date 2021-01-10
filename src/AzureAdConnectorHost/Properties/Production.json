@@ -1,15 +1,15 @@
 ﻿{
   "Cosmos": {
-    "EndpointUrl": "https://wahine-kai-member-database.documents.azure.com:443/",
+    "EndpointUrl": "https://wahinekai-memberdatabase.documents.azure.com:443/",
     "PrimaryKey": "<Our Azure Cosmos account Primary Key (set in Azure KeyVault, do not add here!!!)>",
-    "DatabaseId":  "wahine-kai-member-database"
+    "DatabaseId":  "memberdatabase"
   },
   "BasicAuth":  {
     "Username":  "<Basic authentication Username (set in Azure KeyVault, do not add here!!!)>",
     "Password":  "<Basic authentication Password (set in Azure KeyVault, do not add here!!!)>"
   },
   "KeyVault": {
-    "Url": "https://wahine-kai-dev-secrets.vault.azure.net/"
+    "Url": "https://wahinekai-keyvault.vault.azure.net/"
   },
   "Logging": {
     "LogLevel": {
