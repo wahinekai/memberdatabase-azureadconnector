@@ -10,7 +10,7 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
-      NODE_ENV: production
+      ASPNETCORE_ENV: Production
       AZURE_APP: azureadconnector-wahinekai-memberdatabase
 
     steps:
@@ -38,7 +38,8 @@ jobs:
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.RELEASE_VERSION }}
             ${{ env.REGISTRY }}/${{ github.repository }}:latest
           build-args: |
-            REACT_APP_CUSTOM_NODE_ENV=${{ env.NODE_ENV }}
+            ASPNETCORE_ENV=${{ env.ASPNETCORE_ENV }}
+            PACKAGES_TOKEN=${{ secrets.PACKAGES_TOKEN }}
 
       - name: Login via Azure CLI
         uses: azure/login@v1
