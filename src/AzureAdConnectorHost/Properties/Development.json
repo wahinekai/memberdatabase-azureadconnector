@@ -1,7 +1,6 @@
 ﻿{
   "Cosmos": {
-    "EndpointUrl": "https://dev-wahinekai-memberdatabase.documents.azure.com:443/",
-    "PrimaryKey": "<Our Azure Cosmos account Primary Key (set in user secrets, do not add here!!!)>",
+    "ConnectionString": "<Our Azure Cosmos account Connection String (set in user secrets, do not add here!!!)>",
     "DatabaseId": "memberdatabase"
   },
   "BasicAuth": {

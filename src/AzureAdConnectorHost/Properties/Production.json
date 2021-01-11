@@ -1,12 +1,11 @@
 ﻿{
   "Cosmos": {
-    "EndpointUrl": "https://wahinekai-memberdatabase.documents.azure.com:443/",
-    "PrimaryKey": "<Our Azure Cosmos account Primary Key (set in Azure KeyVault, do not add here!!!)>",
-    "DatabaseId":  "memberdatabase"
+    "ConnectionString": "<Our Azure Cosmos account Connection String (set in Azure KeyVault, do not add here!!!)>",
+    "DatabaseId": "memberdatabase"
   },
-  "BasicAuth":  {
-    "Username":  "<Basic authentication Username (set in Azure KeyVault, do not add here!!!)>",
-    "Password":  "<Basic authentication Password (set in Azure KeyVault, do not add here!!!)>"
+  "BasicAuth": {
+    "Username": "<Basic authentication Username (set in Azure KeyVault, do not add here!!!)>",
+    "Password": "<Basic authentication Password (set in Azure KeyVault, do not add here!!!)>"
   },
   "KeyVault": {
     "Url": "https://wahinekai-keyvault.vault.azure.net/"
