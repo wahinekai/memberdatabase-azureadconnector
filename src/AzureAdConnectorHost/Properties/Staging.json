@@ -9,7 +9,7 @@
     "Password": "<Basic authentication Password (set in Azure KeyVault, do not add here!!!)>"
   },
   "KeyVault": {
-    "Url": "https://wahine-kai-dev-secrets.vault.azure.net/"
+    "Url": "https://dev-wahinekai-keyvault.vault.azure.net/"
   },
   "Logging": {
     "LogLevel": {
