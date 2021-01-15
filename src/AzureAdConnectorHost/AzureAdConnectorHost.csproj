@@ -28,7 +28,7 @@
     <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.2" />
 
     <PackageReference Include="WahineKai.Common" Version="1.1.*" />
-    <PackageReference Include="WahineKai.Common.Api" Version="1.1.*" />
+    <PackageReference Include="WahineKai.Common.Api" Version="2.1.*" />
   </ItemGroup>
 
   <ItemGroup>

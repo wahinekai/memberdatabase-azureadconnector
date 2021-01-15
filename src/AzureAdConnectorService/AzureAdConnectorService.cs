@@ -14,18 +14,12 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Service
     using WahineKai.Common;
     using WahineKai.Common.Api.Services;
     using WahineKai.MemberDatabase.AzureAdConnector.Service.Contracts;
-    using WahineKai.MemberDatabase.Dto;
-    using WahineKai.MemberDatabase.Dto.Contracts;
-    using WahineKai.MemberDatabase.Dto.Models;
-    using WahineKai.MemberDatabase.Dto.Properties;
 
     /// <summary>
     /// Implementation of API Connector Service
     /// </summary>
     public class AzureAdConnectorService : ServiceBase, IAzureAdConnectorService
     {
-        private readonly IUserRepository<AdminUser> repository;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AzureAdConnectorService"/> class.
         /// </summary>
@@ -36,9 +30,6 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Service
         {
             // Validate input arguments
             var configuration = Ensure.IsNotNull(() => configurationMaybeNull);
-
-            var cosmosConfiguration = CosmosConfiguration.BuildFromConfiguration(configuration);
-            this.repository = new CosmosUserRepository<AdminUser>(cosmosConfiguration, loggerFactory);
         }
 
         /// <inheritdoc/>
@@ -51,12 +42,8 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Service
 
             try
             {
-                // Get user from database
-                var user = await this.repository.GetUserByEmailAsync(email);
-
-                // Ensure user is active administrator
-                Ensure.IsTrue(() => user.Active);
-                Ensure.IsTrue(() => user.Admin);
+                // Check to see if user has permissions from base
+                await this.EnsureCallingUserPermissionsAsync(email);
 
                 // User is eligible to sign up for application
                 this.Logger.LogInformation($"Valid user {email} was approved for application login.");

@@ -16,8 +16,8 @@ namespace WahineKai.MemberDatabase.AzureAdConnector.Host
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using WahineKai.MemberDatabase.AzureAdConnector.Host.Properties;
     using WahineKai.Common;
+    using WahineKai.MemberDatabase.AzureAdConnector.Host.Properties;
 
     /// <summary>
     /// Handler for basic authentication
