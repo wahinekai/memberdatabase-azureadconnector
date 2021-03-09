@@ -14,8 +14,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
 
-    <PackageReference Include="WahineKai.Common" Version="1.1.*" />
-    <PackageReference Include="WahineKai.Common.Api" Version="5.0.*" />
+    <PackageReference Include="WahineKai.Common" Version="1.2.*" />
+    <PackageReference Include="WahineKai.Common.Api" Version="6.0.*" />
   </ItemGroup>
 
   <ItemGroup>
