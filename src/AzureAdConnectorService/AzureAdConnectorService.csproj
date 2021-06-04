@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>WahineKai.MemberDatabase.AzureAdConnector.Service</RootNamespace>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
 
@@ -15,7 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
 
     <PackageReference Include="WahineKai.Common" Version="1.1.*" />
-    <PackageReference Include="WahineKai.Common.Api" Version="5.0.*" />
+    <PackageReference Include="WahineKai.Common.Api" Version="5.1.*" />
   </ItemGroup>
 
   <ItemGroup>

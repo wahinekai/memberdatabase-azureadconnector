@@ -5,6 +5,7 @@
     <UserSecretsId>520bbe04-948e-4a44-bd92-0567bfa57c79</UserSecretsId>
     <RootNamespace>WahineKai.MemberDatabase.AzureAdConnector.Host</RootNamespace>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'LocalDevelopment' " />
@@ -28,7 +29,7 @@
     <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.2" />
 
     <PackageReference Include="WahineKai.Common" Version="1.1.*" />
-    <PackageReference Include="WahineKai.Common.Api" Version="5.0.*" />
+    <PackageReference Include="WahineKai.Common.Api" Version="5.1.*" />
   </ItemGroup>
 
   <ItemGroup>

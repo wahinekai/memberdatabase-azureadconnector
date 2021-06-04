@@ -8,7 +8,7 @@ sln = "./src/AzureAdConnector.sln"
 dockerContainerName = "wahinekai/memberdatabase-azureadconnector"
 
 # For dotnet watch run, needs to be relative to sln
-project = "./AzureAdConnectorHost/AzureAdConnectorHost.csproj"
+project = "./src/AzureAdConnectorHost/AzureAdConnectorHost.csproj"
 
 def parse_command_line_arguments():
     parser = OptionParser()
@@ -40,7 +40,7 @@ def dotnetTest(configuration, output):
 
 def dotnetWatchRun(configuration):
     print("Running development version")
-    system(f"dotnet watch --project {sln} run --project {project} --configuration {configuration}")
+    system(f"dotnet watch run --project {project} --configuration {configuration}")
 
 def main():
     print("Parsing command-line arguments")
